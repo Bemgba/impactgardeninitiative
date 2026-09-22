@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Adds security-related HTTP response headers to every request.
- * These complement the .htaccess headers for environments where
- * Apache mod_headers may not be available (e.g., PHP built-in server).
+ * Adds HTTP security headers to every response.
+ * These complement the headers set in public/.htaccess.
  */
 class SecurityHeaders
 {
@@ -17,15 +16,26 @@ class SecurityHeaders
     {
         $response = $next($request);
 
-        $response->headers->set('X-Content-Type-Options', 'nosniff');
-        $response->headers->set('X-Frame-Options', 'SAMEORIGIN');
-        $response->headers->set('X-XSS-Protection', '1; mode=block');
-        $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
-        $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+        $response->headers->set('X-Content-Type-Options',    'nosniff');
+        $response->headers->set('X-Frame-Options',           'SAMEORIGIN');
+        $response->headers->set('X-XSS-Protection',          '1; mode=block');
+        $response->headers->set('Referrer-Policy',           'strict-origin-when-cross-origin');
+        $response->headers->set('Permissions-Policy',        'camera=(), microphone=(), geolocation=()');
 
-        // Remove server fingerprinting headers
-        $response->headers->remove('X-Powered-By');
-        $response->headers->remove('Server');
+        /* Content-Security-Policy — tightened for an information site.
+           Adjust 'script-src' if you add third-party analytics later. */
+        $csp = implode('; ', [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline'",          // Vite inline scripts
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "font-src 'self' https://fonts.gstatic.com",
+            "img-src 'self' data: https://images.unsplash.com https://placehold.co",
+            "connect-src 'self'",
+            "frame-ancestors 'none'",
+            "base-uri 'self'",
+            "form-action 'self'",
+        ]);
+        $response->headers->set('Content-Security-Policy', $csp);
 
         return $response;
     }
