@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block access to Laravel internals
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /_debugbar/
+
+Sitemap: https://www.DevOptions.org/sitemap.xml
