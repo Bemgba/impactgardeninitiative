@@ -1071,3 +1071,31 @@ h1,h2,h3,h4,h5,h6 { margin: 0; line-height: 1.2; font-family: var(--font-display
     .hp-sectors__grid  { grid-template-columns: 1fr; }
     .hp-band__text     { gap: 0.875rem; font-size: 0.9375rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AUDIT FIXES — classes used in views but missing from CSS
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* about-intro__text — text column inside the about/team intro grid */
+.about-intro__text { display: flex; flex-direction: column; }
+.about-intro__text p { color: var(--color-text-muted); font-size: 1.0625rem; line-height: 1.8; }
+.about-intro__text strong { color: var(--color-text); }
+
+/* scope-block__content — text side of the geographic reach 2-col grid */
+.scope-block__content { display: flex; flex-direction: column; justify-content: center; }
+.scope-block__content p { font-size: 1.0625rem; color: var(--color-text-muted); line-height: 1.75; }
+
+/* footer__brand — first column in footer grid (logo + tagline + social) */
+.footer__brand { display: flex; flex-direction: column; }
+
+/* footer__col — navigation / contact / address columns in footer grid */
+.footer__col { display: flex; flex-direction: column; }
+
+/* hp-band__q — base class for coloured band words (modifiers add colour) */
+.hp-band__q { font-weight: 800; }
+
+/* hp-hero__text — left text block inside the home hero grid */
+.hp-hero__text { display: flex; flex-direction: column; }
+
+/* hp-cta__text — left text block inside the home CTA grid */
+.hp-cta__text { display: flex; flex-direction: column; }
