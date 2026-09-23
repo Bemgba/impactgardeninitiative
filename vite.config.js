@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
 
 /*
- * Information site build — pure Blade + vanilla JS.
- * React is intentionally excluded here; it will be wired in
- * only when building app features that require it.
+ * Information site build — pure Blade + vanilla JS, no Tailwind, no React.
+ * Tailwind caused its own `.container` utility to override our custom one,
+ * breaking the layout. The design system is 100% handwritten CSS.
+ * React stays reserved for future app features only.
  */
 export default defineConfig({
     plugins: [
@@ -16,14 +16,11 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        tailwindcss(),
     ],
     build: {
-        /* Inline assets smaller than 4 KB — reduces HTTP requests */
         assetsInlineLimit: 4096,
         rollupOptions: {
             output: {
-                /* Predictable chunk names for cache busting */
                 entryFileNames: 'assets/[name]-[hash].js',
                 chunkFileNames: 'assets/[name]-[hash].js',
                 assetFileNames: 'assets/[name]-[hash][extname]',

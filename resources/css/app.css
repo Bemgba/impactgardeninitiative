@@ -1,4 +1,6 @@
-@import 'tailwindcss';
+/* ── Minimal CSS normalise (replaces Tailwind base layer) ─────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
 
 /* ═══════════════════════════════════════════════════════════════════════════
    IMPACT GARDEN INITIATIVE — Design System
