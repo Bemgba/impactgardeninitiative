@@ -250,18 +250,21 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: 1.2; font-family: var(--font-di
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: var(--r-sm);
     margin-left: 0.5rem;
-    transition: background var(--t-fast);
+    border: 1.5px solid var(--color-border);
+    background: var(--white);
+    flex-shrink: 0;
+    transition: background var(--t-fast), border-color var(--t-fast);
 }
-.nav__burger:hover { background: var(--mint-light); }
+.nav__burger:hover { background: var(--mint-light); border-color: var(--mint); }
 .nav__burger span {
     display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--charcoal);
+    width: 22px;
+    height: 2.5px;
+    background: var(--forest);
     border-radius: 2px;
     transition: transform var(--t-base), opacity var(--t-base);
 }
