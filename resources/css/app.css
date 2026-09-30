@@ -84,7 +84,7 @@ body {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--color-text);
-    background: #C8D8C0;
+    background: var(--color-bg);
     -webkit-font-smoothing: antialiased;
 }
 img, video, svg { max-width: 100%; height: auto; display: block; }
@@ -97,11 +97,9 @@ h1, h2, h3, h4, h5, h6 { margin: 0; line-height: 1.2; font-family: var(--font-di
 
 /* ── Site shell ──────────────────────────────────────────────────────── */
 .site {
-    max-width: var(--site-max);
-    margin-inline: auto;
+    width: 100%;
     background: var(--color-bg);
     min-height: 100vh;
-    box-shadow: 0 0 80px rgb(0 0 0 / 0.18);
     overflow: hidden;
 }
 
