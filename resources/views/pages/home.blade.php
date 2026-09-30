@@ -82,7 +82,7 @@
 {{-- ═══ WHO WE ARE ══════════════════════════════════════════════════════ --}}
 <section class="section section--cream" aria-labelledby="who-heading">
     <div class="wrap">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+        <div class="home-who">
             <div>
                 <span class="sec-tag">Who We Are</span>
                 <h2 class="sec-title" id="who-heading" style="margin-bottom:1.25rem;">
